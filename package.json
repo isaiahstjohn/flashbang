@@ -1,0 +1,9 @@
+{
+	"engines": {
+		"node": ">=0.12"
+	},
+	"scripts": {
+		"start": "node ./parse.js"
+	},
+	"type": "module"
+}

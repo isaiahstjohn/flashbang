@@ -1,0 +1,67 @@
+:Lang js
+
+%%%
+:Front
+JS execute
+```js
+let s = new  Set(1, 2, 3);
+s.has(2)
+```
+
+:Back
+TypeError: number 1 is not iterable (cannot read property Symbol(Symbol.iterator))
+    at new Set (<anonymous>)
+
+:Extra
+Syntax: `new Set([iterable])`
+
+Usage:
+```js
+const set1 = new Set([1, 2, 3, 4, 5]);
+
+console.log(set1.has(1));
+// expected output: true
+```
+
+%%%
+:Front
+JS execute
+```js
+class MyClass{
+  constructor(){
+    this.add([a, b]){
+      return a + b;
+    }
+  }
+}
+
+let c = MyClass();
+c.add([1, 2])
+```
+
+:Back
+SyntaxError: Unexpected token '{'
+
+`this.add([a, b]){}` is not the correct way to declare a method. Instead use
+`this.add = function([a, b]){}`
+
+```js
+class MyClass{
+  constructor(){
+    this.add = function ([a, b]){
+      return a + b;
+    }
+  }
+}
+
+let c = MyClass();
+c.add([1, 2])
+```
+>> 3
+
+
+
+
+
+
+
