@@ -21,7 +21,7 @@ that will be ignored when generating notes.
 
 Inline code can be marked with backticks. If a `:Lang` directive is
 present in the file's header, the code will be assumed to be in that
-language. Multi-line comments can be marked with triple backticks as in
+language. Multi-line code blocks can be marked with triple backticks as in
 GitHub Flavored Markdown.
 
 ### Labels
