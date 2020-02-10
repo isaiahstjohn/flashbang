@@ -1,4 +1,4 @@
-# Web development flash cards
+# Flashbang
 This project creates Anki notes to be imported into the Anki spaced
 repetition flashcard application. Notes are specified in text files
 using a custom format. These files are then parsed to generate .TSV 
