@@ -1,11 +1,12 @@
 # Flashbang
 This project creates Anki notes to be imported into the Anki spaced
-repetition flashcard application. Notes are specified in text files
+repetition flashcard application. Notes--from which Anki extracts one or more cards--are specified in text files
 using a custom format. These files are then parsed to generate .TSV 
 files for import into Anki. 
 
 ## .notes file format
-Note files are broken up into sections by lines beginning with `%%%`.
+Notes go in `.notes` files. An example `.notes` file can be seen [here](js-arrays.notes).
+`.notes` files are broken up into sections by lines beginning with `%%%`.
 The first section of each file is the header. The header contains any 
 labels specifying file configurations. Currently, the only file 
 configuration label is the optional `:Lang` directive to specify the 
