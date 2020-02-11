@@ -17,9 +17,8 @@ class Field {
   static BACK = Symbol("Back Field");
   static SIDE = Symbol("Side Field");
   static CLOZE = Symbol("Cloze Field");
-  static EXTRA = Symbol("Extra Field");
   static types = new Set([Field.FRONT, Field.BACK, Field.SIDE,
-    Field.CLOZE, Field.EXTRA]);
+    Field.CLOZE]);
 
   constructor(_type, _defaultLang) {
     const type = _type;
@@ -59,8 +58,7 @@ class Note {
       [Field.FRONT, 0],
       [Field.BACK, 0],
       [Field.SIDE, 0],
-      [Field.CLOZE, 0],
-      [Field.EXTRA, 0]
+      [Field.CLOZE, 0]
     ]);
     const defaultLang = _defaultLang;
     let END_NOTE = false;           // private
@@ -71,19 +69,16 @@ class Note {
      *     Field.BACK = 1
      *     Field.SIDE = 0
      *     Field.CLOZE = 0
-     *     Field.EXTRA = 0 | 1
      *   Note.REVERSIBLE:
      *     Field.FRONT = 0
      *     Field.BACK = 0
      *     Field.SIDE = 2
      *     Field.CLOZE = 0
-     *     Field.EXTRA = 0 | 1
      *   Note.CLOZE:
      *     Field.FRONT = 0
      *     Field.BACK = 0
      *     Field.SIDE = 0
      *     Field.CLOZE = 1
-     *     Field.EXTRA = 0 | 1
      */
     // (): string || undefined
     function invariantsViolation(){          // private    
@@ -91,13 +86,11 @@ class Note {
       const backs = counts.get(Field.BACK);
       const sides = counts.get(Field.SIDE);
       const clozes = counts.get(Field.CLOZE);
-      const extras = counts.get(Field.EXTRA);
-      assert(fronts + backs + sides + clozes + extras === fields.length);
+      assert(fronts + backs + sides + clozes === fields.length);
       if(fronts > 1) return `No note may have more than one ":Front" field`;
       if(backs > 1) return `No note may have more than one ":Back" field`;
       if(sides > 2) return `No note may have more than two ":Side" fields`;
       if(clozes > 1) return `No note may have more than one ":Cloze" field`;
-      if(extras > 1) return `No note may have more than one ":Extra" field`;
       if((fronts || backs) && (sides || clozes)){
         return `":Front" and ":Back" fields may not used in the same note as":Side" or ":Cloze" fields`;
       }
@@ -129,12 +122,7 @@ class Note {
               backs === 0 &&
               sides === 0 &&
               clozes === 0);
-            if(extras){
-              return `All notes must contain one or more fields that are not ":Extra" fields`
-            }else{
-              return `All notes must contain one or more fields`;
-            }
-            break;
+            return `All notes must contain one or more fields`;
           default:
             assert(false);
         } // switch(type)
@@ -154,7 +142,7 @@ class Note {
       assert(Field.types.has(fieldType));
       fields.push(new Field(fieldType, defaultLang));
       counts.set(fieldType, counts.get(fieldType) + 1);
-      if(!type && fieldType !== Field.EXTRA){
+      if(!type){
         switch(fieldType){
           case Field.SIDE:
             type = Note.REVERSIBLE;
@@ -251,9 +239,6 @@ async function parseFile(fileName){
         break;
       case ":Cloze":
         type = Field.CLOZE;
-        break;
-      case ":Extra":
-        type = Field.EXTRA;
         break;
       default:
         userError(`(${fileName}:${lineNum}) Input Error: "${label[0]}" is an undefined label.`);

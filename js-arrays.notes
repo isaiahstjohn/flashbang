@@ -7,8 +7,7 @@ Does it mutate `arr`?
 
 :Back
 No
-
-:Extra
+---
 `arr.concat(value1[, value2[, ...]])` takes one or more arrays or values as arguments.
 ```js
 var array1 = ['a', 'b', 'c'];
@@ -27,7 +26,7 @@ Does it mutate `arr`?
 :Back
 Yes
 
-:Extra
+---
 `arr.copyWithin(target[, start[, end]])`
 modifies and returns the array it is called on.
 ```js
@@ -51,7 +50,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 `arr.every(callbackfn[, thisArg])` tests whether all elements in the array pass the test implemented by the provided function.
 ```js
 // true
@@ -67,7 +66,7 @@ Does it mutate `arr`?
 :Back
 Yes
 
-:Extra
+---
 `arr.fill(value[, start[, end]])` fills all the elements of an array
 from a start index to an end index with a static value.
 ```js
@@ -89,7 +88,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 `arr.filter(callbackfn[, thisArg])` creates a new array with all elements that pass the test implemented by the provided function.
 https://mdn.io/array/filter
 
@@ -101,7 +100,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 https://mdn.io/array/flat
 
 %%%
@@ -112,7 +111,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 https://mdn.io/array/foreach
 
 %%%
@@ -123,7 +122,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 https://mdn.io/array/map
 
 %%%
@@ -134,7 +133,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 https://mdn.io/array/reduce
 
 %%%
@@ -145,7 +144,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 https://mdn.io/array/reduceright
 
 %%%
@@ -156,7 +155,7 @@ Does it mutate `arr`?
 :Back
 Yes
 
-:Extra
+---
 https://mdn.io/array/reverse
 
 %%%
@@ -167,7 +166,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 https://mdn.io/array/slice
 
 %%%
@@ -178,7 +177,7 @@ Does it mutate `arr`?
 :Back
 No
 
-:Extra
+---
 https://mdn.io/array/some
 
 %%%
@@ -189,7 +188,7 @@ Does it mutate `arr`?
 :Back
 Yes
 
-:Extra
+---
 https://mdn.io/array/sort
 
 %%%
@@ -200,6 +199,6 @@ Does it mutate `arr`?
 :Back
 Yes
 
-:Extra
+---
 https://mdn.io/array/splice
 

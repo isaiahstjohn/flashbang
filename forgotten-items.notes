@@ -11,8 +11,7 @@ s.has(2)
 :Back
 TypeError: number 1 is not iterable (cannot read property Symbol(Symbol.iterator))
     at new Set (<anonymous>)
-
-:Extra
+---
 Syntax: `new Set([iterable])`
 
 Usage:
