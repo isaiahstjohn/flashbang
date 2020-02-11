@@ -1,0 +1,149 @@
+:Lang js
+
+%%%
+:Front
+Git
+Create a new branch `refactor` and check it out
+
+:Back
+```bash
+git checkout -b refactor
+```
+
+%%%
+:Side
+Git
+```bash
+git checkout -b iss53
+```
+is shorthand for what?
+
+:Side
+Git
+```bash
+git branch iss53
+git checkout iss53
+```
+can be shortened to what?
+
+%%%
+:Front
+In the following line, what does the `-a` do?
+```bash
+git commit -a
+```
+
+:Back
+It automatically stages currently tracked files that have been
+modified and deleted
+
+%%%
+:Front
+What is the Git command to 
+1. stage and commit all currently tracked files that have been modified 
+and deleted, and
+2. specify a short commit message?
+
+:Back
+```bash
+git commit -am "commit message"
+```
+
+%%%
+:Cloze
+The two important notes on the below git command are:
+1. {{c1::Newly created files are not staged or committed}}
+2. {{c2::Unlike "git add ." then "git commit -m 'message'", file deletions
+are committed, as well.}}
+```bash
+git commit -am "commit message"
+```
+
+%%%
+:Cloze
+Vim
+```plaintext
+if(x ==* 1)
+      do(something);
+
+      -->
+
+Keystrokes: {{c2::J}}
+
+      -->
+
+{{c1::if(x === 1)*do(something);}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+%%%
+:Cloze
+Vim
+```plaintext
+console.log("Begin *unction");
+
+      -->
+
+Keystrokes: {{c1::I//<C-[>}}
+
+      -->
+
+{{c2::/*console.log("Begin function");}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+%%%
+:Cloze
+Vim
+```plaintext
+function f(){
+    //console.log("Begin *unction");
+    //console.log("Start");
+
+       -->
+
+Keystrokes: {{c1::0w<C-v>jlx}}
+
+       -->
+
+{{c2::function f(){
+    *onsole.log("Begin function");
+    console.log("Start");}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+%%%
+:Cloze
+Vim
+```plaintext
+function f(){
+    *onsole.log("Begin function");
+    console.log("Start");
+
+       -->
+
+Keystrokes: {{c1::0w<C-vjI//<C-[>}}
+
+       -->
+
+{{c2::function f(){
+    */console.log("Begin *unction");
+    //console.log("Start");}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+%%%
+:Side
+Git command to: 
+
+list local branches
+
+:Side
+```bash
+git branch
+```
+This does what?
