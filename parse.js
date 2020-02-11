@@ -7,9 +7,9 @@ import markup from './markup.js';
 "use strict";
 
 const DEBUG = true;
-  //const NOTES_FILE = 'js-arrays.notes';
+const NOTES_FILE = 'js-arrays.notes';
   //const NOTES_FILE = 'forgotten-items.notes';
-const NOTES_FILE = 'test.notes';
+  //const NOTES_FILE = 'test.notes';
 
 
 class Field {
