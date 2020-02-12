@@ -6,10 +6,14 @@ import markup from './markup.js';
 (function(){
 "use strict";
 
-const DEBUG = true;
-const NOTES_FILE = 'js-arrays.notes';
+  const DEBUG = true;
+  const NOTES_FILE = 'js-arrays.notes';
   //const NOTES_FILE = 'forgotten-items.notes';
   //const NOTES_FILE = 'test.notes';
+
+  function htmlEscape(txt){
+    return s.replace(/[&<>]/g, c => "&# + c.charCodeAt(0) + ";");
+  }
 
 
 class Field {
@@ -186,6 +190,7 @@ class Note {
 async function parseFile(fileName){
   let lines = await fs.readFile(fileName, 'utf8');
   lines = lines.replace(/\t/g, '  ');
+  lines = htmlEscape(lines);
   lines = lines.split('\n');
   let fileLang;
   let notes = [];
