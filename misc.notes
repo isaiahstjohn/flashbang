@@ -14,15 +14,15 @@ git checkout -b refactor
 :Side
 Git
 ```bash
-git checkout -b iss53
+git checkout -b my_branch
 ```
 is shorthand for what?
 
 :Side
 Git
 ```bash
-git branch iss53
-git checkout iss53
+git branch my_branch
+git checkout my_branch
 ```
 can be shortened to what?
 
@@ -147,3 +147,56 @@ list local branches
 git branch
 ```
 This does what?
+
+%%%
+:Side
+```bash
+git branch -d my_branch
+```
+This does what?
+
+:Side
+Git command to:
+
+Delete `my_branch` if `my_branch` has already been fully merged in its
+upstream branch
+
+%%%
+:Side
+Git command to:
+
+See differences between two branches
+
+:Side
+```bash
+git diff branch_a branch_b
+```
+This does what?
+
+%%%
+:Front
+JS X
+```js
+new Set(['a', 'b'], ['b', 'c'])
+```
+
+:Back
+```js
+{{c1::Set { 'a', 'b' } }}
+```
+
+%%%
+:Side
+Vim
+<C-r> does what?
+
+:Side
+Vim keystroke to:
+
+redo
+
+
+
+
+
+
