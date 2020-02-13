@@ -1,6 +1,6 @@
 :Lang js
 
-%%%
+%%% k6kbbsug-qgl6xd7pdgg
 :Front
 Git
 Create a new branch `refactor` and move into it
@@ -10,7 +10,7 @@ Create a new branch `refactor` and move into it
 git checkout -b refactor
 ```
 
-%%%
+%%% k6kbbsuq-nrust80wxyo
 :Side
 Git
 ```bash
@@ -26,7 +26,7 @@ git checkout my_branch
 ```
 can be shortened to what?
 
-%%%
+%%% k6kbbsuq-9nc9ubti49o
 :Front
 In the following line, what does the `-a` do?
 ```bash
@@ -37,7 +37,7 @@ git commit -a
 It automatically stages currently tracked files that have been
 modified and deleted
 
-%%%
+%%% k6kbbsur-g3ast0ye9fk
 :Front
 What is the Git command to 
 1. stage and commit all currently tracked files that have been modified 
@@ -49,7 +49,7 @@ and deleted, and
 git commit -am "commit message"
 ```
 
-%%%
+%%% k6kbbsur-h8kyozoko7c
 :Cloze
 ```bash
 git commit -am "commit message"
@@ -64,7 +64,7 @@ in two important ways.
 1. {{c1::Newly created files are not staged or committed}}
 2. {{c2::File deletions are committed}}
 
-%%%
+%%% k6kbbsur-773gixxtng0
 :Cloze
 Vim
 ```plaintext
@@ -82,7 +82,7 @@ Keystrokes: {{c2::J}}
 
 Note: `*` indicates the cursor position in command mode
 
-%%%
+%%% k6kbbsus-khnce2gnukw
 :Cloze
 Vim
 ```plaintext
@@ -99,7 +99,7 @@ Keystrokes: {{c1::I//<C-[>}}
 
 Note: `*` indicates the cursor position in command mode
 
-%%%
+%%% k6kbbsus-9kamau09sek
 :Cloze
 Vim
 ```plaintext
@@ -120,7 +120,7 @@ Keystrokes: {{c1::0w<C-v>jlx}}
 
 Note: `*` indicates the cursor position in command mode
 
-%%%
+%%% k6kbbsus-ezxj83qfz08
 :Cloze
 Vim
 ```plaintext
@@ -141,7 +141,7 @@ Keystrokes: {{c1::0w<C-v>jI//<C-[>}}
 
 Note: `*` indicates the cursor position in command mode
 
-%%%
+%%% k6kbbsus-96d17zfgyqo
 :Side
 Git command to: 
 
@@ -153,7 +153,7 @@ git branch
 ```
 This does what?
 
-%%%
+%%% k6kbbsus-f2hvdwyzh3c
 :Side
 ```bash
 git branch -d my_branch
@@ -166,7 +166,7 @@ Git command to:
 Delete `my_branch` if `my_branch` has already been fully merged in its
 upstream branch
 
-%%%
+%%% k6kbbsus-p99h275w5n4
 :Side
 Git command to:
 
@@ -178,7 +178,7 @@ git diff branch_a branch_b
 ```
 This does what?
 
-%%%
+%%% k6kbbsus-966tel85yao
 :Front
 JS X
 ```js
@@ -190,7 +190,7 @@ new Set(['a', 'b'], ['b', 'c'])
 Set { 'a', 'b' }
 ```
 
-%%%
+%%% k6kbbsut-qu36guz1ui8
 :Side
 Vim
 `<C-r>` does what?
@@ -199,4 +199,15 @@ Vim
 Vim keystroke to:
 
 redo
+
+%%%
+:Side
+Vim
+`68G` does what?
+
+:Side
+Vim
+Keystroke(s) to:
+
+go to line `68`
 
