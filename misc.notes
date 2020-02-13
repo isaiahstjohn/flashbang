@@ -3,7 +3,7 @@
 %%%
 :Front
 Git
-Create a new branch `refactor` and check it out
+Create a new branch `refactor` and move into it
 
 :Back
 ```bash
@@ -51,13 +51,18 @@ git commit -am "commit message"
 
 %%%
 :Cloze
-The two important notes on the below git command are:
-1. {{c1::Newly created files are not staged or committed}}
-2. {{c2::Unlike "git add ." then "git commit -m 'message'", file deletions
-are committed, as well.}}
 ```bash
 git commit -am "commit message"
 ```
+is different from
+```bash
+git add .
+git commit -m "message"
+```
+in two important ways.
+
+1. {{c1::Newly created files are not staged or committed}}
+2. {{c2::File deletions are committed}}
 
 %%%
 :Cloze
@@ -120,17 +125,17 @@ Note: `*` indicates the cursor position in command mode
 Vim
 ```plaintext
 function f(){
-    *onsole.log("Begin function");
+    console.log("Begin *unction");
     console.log("Start");
 
        -->
 
-Keystrokes: {{c1::0w<C-vjI//<C-[>}}
+Keystrokes: {{c1::0w<C-v>jI//<C-[>}}
 
        -->
 
 {{c2::function f(){
-    */console.log("Begin *unction");
+    */console.log("Begin function");
     //console.log("Start");}}
 ```
 
@@ -182,21 +187,16 @@ new Set(['a', 'b'], ['b', 'c'])
 
 :Back
 ```js
-{{c1::Set { 'a', 'b' } }}
+Set { 'a', 'b' }
 ```
 
 %%%
 :Side
 Vim
-<C-r> does what?
+`<C-r>` does what?
 
 :Side
 Vim keystroke to:
 
 redo
-
-
-
-
-
 

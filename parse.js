@@ -1,3 +1,15 @@
+"use strict"
+
+/*
+ * USAGE
+ *
+ *  node parse.js myinput.notes [-mark]
+ *
+ *  Use the `-mark` flag to mark the notes in the .notes file with
+ *  ID's. They will not be exported to the TSV file in the future.
+ *
+ */
+
 import _fs from 'fs';
 const fs = _fs.promises;
 
@@ -7,14 +19,34 @@ import markup from './markup.js';
 "use strict";
 
   const DEBUG = true;
-  const NOTES_FILE = 'js-arrays.notes';
-  //const NOTES_FILE = 'forgotten-items.notes';
-  //const NOTES_FILE = 'test.notes';
+  let NOTES_FILE;
 
   function htmlEscape(txt){
-    return s.replace(/[&<>]/g, c => "&# + c.charCodeAt(0) + ";");
+    return txt;
+    //return txt.replace(/[&<>]/g, c => "&#" + c.charCodeAt(0) + ";");
   }
 
+  function newId(){
+    let timestamp = Date.now().toString(36);
+    let rand = Math.floor(Math.random() * Math.pow(10, 17))
+      .toString(36);
+    return `${timestamp}-${rand}`;
+  }
+  
+  let lineChanges = [];
+  function queueLineChange(lineNumber, newLineText){
+    // TODO: queue up line replacements to be executed after done generating
+    // card file
+    lineChanges.push([lineNumber - 1, newLineText]);
+  }
+  function changeLines(txt){
+    let lines = txt.split('\n');
+    lineChanges.forEach(change => {
+      let [lineNumber, newLineText] = change;
+      lines[lineNumber] = newLineText;
+    });
+    return lines.join('\n');
+  }
 
 class Field {
   static FRONT = Symbol("Front Field");
@@ -54,7 +86,7 @@ class Note {
   static CLOZE = Symbol("Cloze Note");
 
   // (initialFileName: string, initialLineNum: string, defaultLang: string)
-  constructor(initialFileName, initialLineNum, _defaultLang){
+  constructor(initialFileName, initialLineNum, _defaultLang, _id){
     let that = this;
     let fields = [];                // private
     let type = undefined;           // private
@@ -65,6 +97,7 @@ class Note {
       [Field.CLOZE, 0]
     ]);
     const defaultLang = _defaultLang;
+    const id = _id;
     let END_NOTE = false;           // private
     /*
      * Note types and field count rules:
@@ -179,18 +212,28 @@ class Note {
 
     checkInvariants(initialFileName, initialLineNum);
 
+    this.getType = function(){
+      return type;
+    }
+
     this.toString = function(){
+      if(id) return '';
+      let _id = newId();
       let content = fields.map(field => field.toString()).join('\t');
+      content += `<span id="noteId" style="display:none;">%%%${_id}%%%</span>`;
+      queueLineChange(initialLineNum, `%%% ${_id}`);
       return content;
     }
   } // constructor()
+
 } // class Note
 
 // (fileName: string)
-async function parseFile(fileName){
-  let lines = await fs.readFile(fileName, 'utf8');
-  lines = lines.replace(/\t/g, '  ');
-  lines = htmlEscape(lines);
+async function parseFile(){
+  let fileName = process.argv[2];
+  NOTES_FILE = fileName;
+  const originalText = await fs.readFile(fileName, 'utf8');
+  let lines = originalText.replace(/\t/g, '  ');
   lines = lines.split('\n');
   let fileLang;
   let notes = [];
@@ -231,7 +274,9 @@ async function parseFile(fileName){
         if(tail){
           tail.endNote(fileName, lineNum);
         }
-        notes.push(new Note(fileName, lineNum, fileLang));
+        let noteId = /%%%\s+(\w+)/.exec(line)
+        noteId = noteId ? noteId[1] : '';
+        notes.push(new Note(fileName, lineNum, fileLang, noteId));
         continue;
       case ":Front":
         type = Field.FRONT;
@@ -251,9 +296,26 @@ async function parseFile(fileName){
     if(!tail) illegalHeadError();
     tail.newField(fileName, lineNum, type);
   } // for(const [index, line] of lines.entries())
-
-  let fullText = notes.map(note => note.toString()).join('\n');
-  console.log(fullText);
+  
+  let cardCollections = { "basic": [], "reversible": [], "cloze": [] };
+  let cardTypes = {
+    [Note.BASIC]: "basic",
+    [Note.REVERSIBLE]: "reversible",
+    [Note.CLOZE]: "cloze"
+  };
+  notes.forEach( note => {
+    let typeName = cardTypes[note.getType()];
+    cardCollections[typeName].push(note.toString());
+  });
+  for(let typeName of Object.keys(cardCollections)){
+    let collection = cardCollections[typeName];
+    let output = collection.join('\n');
+    if(/\S/.test(output)){
+      fs.writeFile(fileName + "__" + typeName + ".txt", output);
+    }
+  }
+  let updatedText = changeLines(originalText);
+  if(process.argv[3] === "-mark") fs.writeFile(fileName, updatedText);
 } // parseFile(fileName)
 
 function assert(predicate){

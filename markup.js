@@ -33,6 +33,7 @@ function linkify(text){
 
 function markupText(text, defaultLang){
   text = highlightCode(text, defaultLang);
+  text = text.replace(/\n---/g, "<hr>");
   text = text.replace(/\n/g, "<br>");
   text = linkify(text);
   return text;
