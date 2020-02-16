@@ -1,14 +1,4 @@
-"use strict"
-
-/*
- * USAGE
- *
- *  node parse.js myinput.notes [-mark]
- *
- *  Use the `-mark` flag to mark the notes in the .notes file with
- *  ID's. They will not be exported to the TSV file in the future.
- *
- */
+#!/usr/bin/env node
 
 import _fs from 'fs';
 const fs = _fs.promises;
@@ -18,6 +8,38 @@ import markup from './markup.js';
 (function(){
 "use strict";
 
+  function help(){
+  console.log(`
+NAME
+  parse.js - Create Anki flashcards from text files
+
+SYNOPSIS
+  parse.js [FILE] [-m|--mark] [-h|--help]
+
+  Generate a .txt file in the format Anki requires.
+
+  -m, --mark
+    Use the "-mark" flag to mark the notes in the .notes file with ID's.
+They will not be exported to the TSV file in the future.
+
+  -h, --help
+    Print this help message.
+  `);
+    process.exit(0);
+  }
+
+  const args = process.argv.slice(2);
+
+  if(args.some(arg => /-\w*h|--help/.test(arg))){
+    help();
+  }else if(!args.some(arg => /[^-]\w+/.test(arg))){
+    console.error(`Error: No input file specified.
+
+See "parse.js --help" for help.`);
+    process.exit(1);
+  }
+
+  const MARK = args.some(arg => /-\w*m|--mark/.test(arg));
   const DEBUG = true;
   let NOTES_FILE;
 
@@ -67,7 +89,13 @@ class Field {
     }
 
     this.toString = function(){
+      try{
+        // Debug try/catch, remove later
       return markup.markupText(lines.join('\n'), defaultLang);
+      } catch (error) {
+        console.log(lines.join('\n'));
+        throw(error);
+      }
     }
   } // constructor(type)
 } // class Field
@@ -250,7 +278,11 @@ async function parseFile(){
     if(!line.match(/^:|^%%%/)){
       // not a label
       if(!tail) illegalHeadError();
-      tail.pushContent(line);
+      try{
+        tail.pushContent(line);
+      }catch{
+        userError(`(${fileName}:${lineNum}) Input Error: Only comments and blank lines may occurr before any labels within a note definition`);
+      }
       continue;
     }
     let label = /^:[^\s]+|^%%%/.exec(line);
@@ -315,7 +347,9 @@ async function parseFile(){
     }
   }
   let updatedText = changeLines(originalText);
-  if(process.argv[3] === "-mark") fs.writeFile(fileName, updatedText);
+  if(MARK){
+    fs.writeFile(fileName, updatedText);
+  }
 } // parseFile(fileName)
 
 function assert(predicate){
