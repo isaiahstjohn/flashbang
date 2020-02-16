@@ -1,0 +1,331 @@
+:Lang plaintext
+
+%%% k6kbbsur-773gixxtng0
+:Cloze
+Vim
+```plaintext
+if(x ==* 1)
+      do(something);
+
+      -->
+
+Keystrokes: {{c2::J}}
+
+      -->
+
+{{c1::if(x === 1)*do(something);}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+%%% k6kbbsus-khnce2gnukw
+:Cloze
+Vim
+```plaintext
+console.log("Begin *unction");
+
+      -->
+
+Keystrokes: {{c1::I//<C-[>}}
+
+      -->
+
+{{c2::/*console.log("Begin function");}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+%%% k6kbbsus-9kamau09sek
+:Cloze
+Vim
+```plaintext
+function f(){
+    //console.log("Begin *unction");
+    //console.log("Start");
+
+       -->
+
+Keystrokes: {{c1::0w<C-v>jlx}}
+
+       -->
+
+{{c2::function f(){
+    *onsole.log("Begin function");
+    console.log("Start");}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+%%% k6kbbsus-ezxj83qfz08
+:Cloze
+Vim
+```plaintext
+function f(){
+    console.log("Begin *unction");
+    console.log("Start");
+
+       -->
+
+Keystrokes: {{c1::0w<C-v>jI//<C-[>}}
+
+       -->
+
+{{c2::function f(){
+    */console.log("Begin function");
+    //console.log("Start");}}
+```
+
+Note: `*` indicates the cursor position in command mode
+
+
+%%% k6kbbsut-qu36guz1ui8
+:Side
+Vim
+`C-r` does what?
+
+:Side
+Vim keystroke to:
+
+redo
+
+%%% k6pmt22n-66lwuqjq6jc
+:Side
+Vim
+`68G` does what?
+
+:Side
+Vim
+Keystroke(s) to:
+
+go to line `68`
+
+%%% k6pmt22o-qymn0f5ycj4
+:Cloze
+Vim
+```plaintext
+*
+let myVar;
+console.log(foo(myVar));
+      ---> Keystrokes: {{c2::/myvar<CR>}}
+{{c4::let **myVar**;
+console.log(foo(myVar));}}
+      ---> Keystrokes: {{c1::n}}
+{{c5::let myVar;
+console.log(foo(**myVar**));}}
+      ---> Keystrokes: {{c3::N}}
+{{c6::let **myVar**;
+console.log(foo(myVar));}}
+```
+
+%%% k6pmt22o-49c6n4imo6c
+:Cloze
+Vim
+```plaintext
+let myVar;
+console.log(foo(myVar));
+*
+      ---> Keystrokes: {{c2::?myvar<CR>}}
+{{c5::let myVar;
+console.log(foo(**myVar**));}}
+      ---> Keystrokes: {{c1::n}}
+{{c4::let **myVar**;
+console.log(foo(myVar));}}
+      ---> Keystrokes: {{c3::N}}
+{{c6::let myVar;
+console.log(foo(**myVar**));}}
+```
+
+%%% k6pmt22o-k1njgl529do
+:Front
+Vim
+Remove highlighting after a search
+
+:Back
+Vim
+`:noh<CR>` does what?
+
+%%% k6pmt22o-cwpnw6p4fls
+:Cloze
+Vim
+1. {{c1::`/foo<CR>`}} Forward search for "foo" and jump to the first occurrence
+THEN
+2. {{c2::`n`}} Jump to the second occurrence of "foo"
+
+%%% k6pmt22p-4fy9d41fqeo
+:Cloze
+Vim
+1. {{c1::`?foo<CR>`}} Backwards search for "foo"
+THEN
+2. {{c2::`n`}} Jump to the previous occurrence of "foo"
+
+%%% k6pmt22p-ff91nobzyjk
+:Cloze
+Vim
+1. {{c1::`/foo<CR>`}} {{c4::Forward search for "foo" and jump to the first occurrence}}
+THEN
+2. {{c2::`C-o`}} {{c5::Undo last jump, jumping back to initial position before search. (Can be repeated to continue going back through location history)}}
+THEN
+3. {{c3::`C-i`}} {{c6::Redo jump, going back to first occurrence of "foo". (Can be repeated to continue going back through location history)}}
+
+%%% k6pmt22p-gpqfbpg3xa0
+:Side
+Vim
+When a physical line is wrapped across multiple visual lines by Vim, how can you move up and down between visual lines instead of between physical lines?
+
+:Side
+Vim
+`gj` and `gk` do what?
+
+%%% k6pmt22p-e8tlv07ad7s
+:Side
+Vim
+Jump to the matching (), [], or {}.
+
+:Side
+Vim
+`%` does what?
+
+%%% k6pmt22p-5g7reibx6jk
+:Side
+Vim
+In the current line, search and replace all occurrences of "foo" with "bar"
+
+:Side
+Vim
+`:s/foo/bar/g` does what?
+
+%%% k6pmt22p-g3renl5265k
+:Side
+Vim
+From line # to #, search and replace all occurrences of "foo" with "bar"
+
+:Side
+Vim
+`:#,#s/foo/bar/g` does what?
+
+%%% k6pmt22p-jt00tiwcfhc
+:Side
+Vim
+In the current file, search and replace all occurrences of "foo" with "bar"
+
+:Side
+Vim
+`:%s/foo/bar/g` does what?
+
+%%% k6pmt22p-mcmakfqsj7k
+:Side
+Vim
+In the current file, search and replace all occurrences of "foo" with "bar" asking for confirmation first
+
+:Side
+Vim
+`:s/foo/bar/gc` does what?
+
+%%% k6pmt22p-5xp0pn0dh48
+:Side
+Vim
+Go to the first line of the file
+
+:Side
+Vim
+`gg` does what?
+
+%%% k6pmt22p-iw9az465ygw
+:Side
+Vim
+Go to the last line of the file
+
+:Side
+Vim
+`G` does what?
+
+%%% k6pmt22p-gesa9wis77s
+:Side
+Vim
+Save the file as my-file
+
+:Side
+Vim
+`:w my-file` does what?
+
+%%% k6pmt22p-d476x786vz4
+:Side
+Vim
+Remove the file my-file
+
+:Side
+Vim
+`:!rm my-file` does what?
+
+%%% k6pmt22p-ohsf09kw328
+:Side
+Vim
+Save highlighted text to my-file
+
+:Side
+Vim
+`:w my-file`
+
+%%% k6pmt22p-6r34wra793c
+:Side
+Vim
+Write contents of my-file into current file at current position
+
+:Side
+Vim
+`:r my-file` does what?
+
+%%% k6pmt22p-ifiyl0n8fo0
+:Side
+Vim
+Enter the list of all files in you current working directory into the file
+
+:Side
+Vim
+`:r!ls` does what?
+
+%%% k6pmt22p-hjf87mu69xc
+:Side
+Vim
+Toggle highlighting of search terms in this and future searches
+
+:Side
+Vim
+`:set invhls` does what?
+
+%%% k6pmt22p-ijp7mbycslk
+:Side
+Vim
+Toggle ignore case
+
+:Side
+Vim
+`:set invic` does what?
+
+%%% k6pmt22p-e85xdbxv4vk
+:Side
+Vim
+Do a case-insensitive search for "foo"
+
+:Side
+Vim
+`/foo\c` does what?
+
+%%% k6pmt22p-pfoxskc0sdc
+:Side
+Vim
+Jump to the next blank line
+
+:Side
+Vim
+`}` does what?
+
+%%% k6pmt22p-h8ypaqyaenc
+:Side
+Vim
+Jump to the previous blank line
+
+:Side
+Vim
+`{` does what?
+

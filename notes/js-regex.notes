@@ -1,0 +1,259 @@
+:Lang plaintext
+: js-regex.notes
+: Topics covered:
+:   - re.test()
+:   - re.exec()
+:   - str.search()
+:   - str.match()
+%%% k6pmsmph-hw5flc7fbhs
+:Side
+JS
+How should you check if a `str` contains a `re`?
+
+:Side
+JS
+`re.test(str)` does what?
+
+%%% k6pmsmpi-8cgar7bdr64
+:Front
+JS
+`re.test(str)` returns what type of value?
+
+:Back
+`boolean`
+
+%%% k6pmsmpi-imnoa75my1k
+:Front
+JS
+`/z/.test('hello');`
+
+:Back
+`false`
+
+%%% k6pmsmpj-oa599ikdtnk
+:Side
+JS
+How can you determine the index of a `regex` within a `str`?
+
+:Side
+JS
+`str.search(regex)` does what?
+
+%%% k6pmsmpj-go1tjdoe4aw
+:Front
+JS X
+`'hello'.search(/h/);`
+
+:Back
+`0`
+
+%%% k6pmsmpj-71j3pd158q
+:Front
+JS X
+`'hello'.search(/8/);`
+
+:Back
+`-1`
+
+%%% k6pmsmpj-iruzjkqe7c8
+:Front
+JS
+`str.search(re)` returns what type of value?
+
+:Back
+`integer` (index of match or -1)
+
+%%% k6pmsmpj-kqzuhy7ml00
+:Cloze
+JS
+`RegExp` methods are:
+{{c1::test()}} and {{c2::exec()}}
+
+%%% k6pmsmpj-mg9pdmdzi2o
+:Cloze
+JS
+`String` methods using regular expressions are:
+{{c1::match() and matchAll()}}
+{{c2::search()}}
+{{c3::replace()}}
+{{c4::split()}}
+
+%%% k6pmsmpj-f9odt6g98ao
+:Cloze
+JS X
+```plaintext
+const re = /(.)(.)/g;
+const str = 'abcd';
+re.exec(str);
+// ->
+// [
+//   {{c1::'ab'}}, {{c1::'a'}}, {{c1::'b'}}, 
+//   {{c4::index: 0}}, {{c5::input: 'abcd'}}
+// ]
+```
+
+%%% k6pmsmpj-ltc7d6q61n4
+:Cloze
+JS X
+```plaintext
+const re = /(.)(.)/g;
+const str = 'abcd';
+re.exec(str);
+re.exec(str);
+// ->
+// [
+//   {{c1::'cd'}}, {{c1::'c'}}, {{c1::'d'}}, 
+//   {{c4::index: 2}}, {{c5::input: 'abcd'}}
+// ]
+```
+
+%%% k6pmsmpj-r4hi58ky4w
+:Cloze
+JS X
+```plaintext
+const re = /(.)(.)/;
+const str = 'abcd';
+re.exec(str);
+re.exec(str);
+// ->
+// [
+//   {{c1::'ab'}}, {{c1::'a'}}, {{c1::'b'}}, 
+//   {{c4::index: 0}}, {{c5::input: 'abcd'}}
+// ]
+```
+
+%%% k6pmsmpj-8356qaib4x
+:Front
+JS
+What is the return type?
+`re.exec(str)`
+
+:Back
+`array` or `null`
+
+%%% k6pmsmpj-nuvb578b0m8
+:Cloze
+JS X
+```plaintext
+const str = 'abcd';
+const re = /(.)(.)/g;
+re.lastIndex;
+// -> {{c1::0}}
+re.exec(str);
+re.lastIndex;
+// -> {{c2::2}}
+re.exec('x');
+// -> {{c4::null}}
+re.lastIndex;
+// -> {{c3::0}}
+```
+
+%%% k6pmsmpj-px41jtxwu5s
+:Cloze
+JS X
+```plaintext
+const re = /(.)(.)/g;
+{{c8::re.ignoreCase;}}
+// -> {{c1::false (re is case sensitive)}}
+{{c5::re.global;}}
+// -> {{c2::true (re is a global regular expression)}}
+{{c6::re.multiline;}}
+// -> {{c3::false (^ and $ only match at the very end and very beginning of the string)}}
+{{c7::re.source;}}
+// -> {{c4::'(.)(.)'}}
+```
+
+%%% k6pmsmpj-528vmcr7mz0
+:Cloze
+JS regular expressions accept the following flags:
+{{c1::'s'}}: {{c2::dotAll means '.' matches newlines}}
+{{c3::'g'}}: {{c4::global means re is tested against all possible matches in the string, not only the first}}
+{{c5::'i'}}: {{c6::ignoreCase}}
+{{c7::'m'}}: {{c8::multiline means '^' and '$' match on each line of the string}}
+{{c9::'y'}}: {{c10::sticky means re only searches in strings from re.lastIndex}}
+{{c11::'u'}}: {{c12::unicode means Unicode features are enabled}}
+
+%%% k6pmsmpj-6ucb98wwnv4
+:Cloze
+JS
+```plaintext
+let re = /hello/gmi;
+{{c1::re.flags;}}
+// -> {{c2::'gmi'}}
+```
+
+%%% k6pmsmpj-g029vc4qazk
+:Front
+JS
+When `re.global === true`, what functions can produce capture groups with `re`?
+
+:Back
+`re.exec(str)` and `str.matchAll(re)`
+
+%%% k6pmsmpj-fn2mjw0hbxs
+:Front
+JS
+When `re.global === true`, does `str.match(re)` produce capture groups?
+
+:Back
+No
+
+%%% k6pmsmpj-774291s7vec
+:Front
+JS
+When `re.global === true`, does `re.exec(str)` produce capture groups?
+
+:Back
+Yes
+
+%%% k6pmsmpj-7garznx22no
+:Side
+JS
+When are `re.exec(str)` and `str.match(re)` equivalent?
+
+:Side
+When `re.global === false`--that is, when the "g" flag is not set--what two calls are equivalent?
+
+%%% k6pmsmpj-fdj1dsyq2h4
+:Side
+JS
+When `re.global === true`, what function call produces an array of matching substrings?
+
+:Side
+JS
+When `re.global === true`, `str.match(re)` produces what?
+
+%%% k6pmsmpj-hxknhknngzs
+:Cloze
+JS
+```plaintext
+let re = {{c1::/./g}};
+let str = 'abc';
+{{c2::str.match(re)}};
+// -> {{c3::['a', 'b', 'c']}}
+```
+
+%%% k6pmsmpj-3kvmdkoatm2
+:Cloze
+JS
+```plaintext
+'hello'.match({{c1::/../g}});
+// -> {{c2::['he', 'll'] }}
+```
+
+%%% k6pmsmpj-1fptfedw5yh
+:Cloze
+JS
+```plaintext
+'hello'.match({{c1::/..|./g}});
+// -> {{c2::['he', 'll', 'o']}}
+```
+
+%%% k6pmsmpj-k10sbd1hmw0
+:Front
+JS X
+`'hello'.match(/.|../g)`
+
+:Back
+`['h', 'e', 'l', 'l', 'o']`
+

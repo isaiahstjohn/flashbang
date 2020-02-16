@@ -1,0 +1,237 @@
+:Lang plaintext
+
+%%% k6pmsxfw-2ngqytou3nc
+:Side
+Tmux
+Toggle fullsize for current pane
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a z`
+
+%%% k6pmsxfx-aog1xn8v5eo
+:Side
+Tmux
+Create a new session with a given `session_name` from within
+the current session
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a :new -s session_name`
+
+%%% k6pmsxfx-61cq6x5g6mc
+:Side
+Tmux
+Create a new session with a given `session_name` from bash
+
+:Side
+Tmux
+The following keystrokes do what?
+```bash
+tmux new -s session_name
+```
+
+%%% k6pmsxg0-ipbw21chw1c
+:Side
+Tmux
+Detach from the current session
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a d`
+
+%%% k6pmsxg0-ixixv7gzs40
+:Side
+Tmux
+Show the names of all running sessions from bash
+
+:Side
+Tmux
+The following keystrokes do what?
+```bash
+tmux ls
+```
+
+%%% k6pmsxg0-6flino33nkg
+:Side
+Tmux
+Show the names of all running sessions from within Tmux
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a s`
+
+%%% k6pmsxg0-8rn62f6atow
+:Side
+Tmux
+Attach to running session `my_session`
+
+:Side
+Tmux
+The following keystrokes do what?
+```bash
+tmux a -t my_session
+```
+
+%%% k6pmsxg0-1daftk2r4xj
+:Front
+What does `-t` stand for in the following command?
+```bash
+tmux a -t my_session
+```
+
+:Back
+target: the target session to attach to
+
+%%% k6pmsxg0-74sumx57qbw
+:Front
+What does `a` stand for in the following command?
+```bash
+tmux a -t my_session
+```
+
+:Back
+attach-session
+
+%%% k6pmsxg0-5lg1pm89nno
+:Side
+Tmux
+Attach to the most recent session
+
+:Side
+Tmux
+The following keystrokes do what?
+```bash
+tmux a
+```
+
+%%% k6pmsxg0-pisu9kvk828
+:Side
+Tmux
+Create a new window
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a c`
+
+%%% k6pmsxg0-iut0bmw0a20
+:Side
+Tmux
+Close current window
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a &`
+
+%%% k6pmsxg0-as07h9ju6v4
+:Front
+Tmux config file is where?
+
+:Back
+`~/.tmux.conf`
+
+%%% k6pmsxg0-cpuqqvuskeo
+:Front
+How do you make changes made to the Tmux config file immediately
+take effect?
+
+:Back
+```bash
+tmux source-file ~/.tmux.conf
+```
+
+%%% k6pmsxg0-aygfozsh7w0
+:Front
+Tmux
+Enable the mouse
+
+:Back
+```plaintext
+C-a :set -g mouse on
+```
+
+%%% k6pmsxg0-cmoktq70ibs
+:Side
+Tmux
+Split window into top and bottom
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a -`
+
+%%% k6pmsxg0-hpax00cxhe8
+:Side
+Tmux
+Split window into left and right
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a |`
+
+%%% k6pmsxg0-511wj8s5pj0
+:Side
+Tmux
+Close the current pane
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-d`
+
+%%% k6pmsxg0-3o2307eez76
+:Side
+Tmux
+Change the current session's name
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a $`
+
+%%% k6pmsxg0-5p11npowbr8
+:Side
+Tmux
+Change the current window's name
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a ,`
+
+%%% k6pmsxg0-a4fjf242cg8
+:Side
+Tmux
+Open an interactive window chooser
+
+:Side
+Tmux
+The following keystrokes do what?
+`C-a w`
+
+%%% k6pmsxg0-3io998tiyvy
+:Side
+Tmux
+Switch to the next window
+
+:Side
+The following keystrokes do what?
+`C-a n`
+
+%%% k6pmsxg0-jmudcpabxyw
+:Side
+Tmux
+Switch to the previous window
+
+:Side
+The following keystrokes do what?
+`C-a p`
+
+

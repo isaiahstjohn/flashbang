@@ -64,83 +64,6 @@ in two important ways.
 1. {{c1::Newly created files are not staged or committed}}
 2. {{c2::File deletions are committed}}
 
-%%% k6kbbsur-773gixxtng0
-:Cloze
-Vim
-```plaintext
-if(x ==* 1)
-      do(something);
-
-      -->
-
-Keystrokes: {{c2::J}}
-
-      -->
-
-{{c1::if(x === 1)*do(something);}}
-```
-
-Note: `*` indicates the cursor position in command mode
-
-%%% k6kbbsus-khnce2gnukw
-:Cloze
-Vim
-```plaintext
-console.log("Begin *unction");
-
-      -->
-
-Keystrokes: {{c1::I//<C-[>}}
-
-      -->
-
-{{c2::/*console.log("Begin function");}}
-```
-
-Note: `*` indicates the cursor position in command mode
-
-%%% k6kbbsus-9kamau09sek
-:Cloze
-Vim
-```plaintext
-function f(){
-    //console.log("Begin *unction");
-    //console.log("Start");
-
-       -->
-
-Keystrokes: {{c1::0w<C-v>jlx}}
-
-       -->
-
-{{c2::function f(){
-    *onsole.log("Begin function");
-    console.log("Start");}}
-```
-
-Note: `*` indicates the cursor position in command mode
-
-%%% k6kbbsus-ezxj83qfz08
-:Cloze
-Vim
-```plaintext
-function f(){
-    console.log("Begin *unction");
-    console.log("Start");
-
-       -->
-
-Keystrokes: {{c1::0w<C-v>jI//<C-[>}}
-
-       -->
-
-{{c2::function f(){
-    */console.log("Begin function");
-    //console.log("Start");}}
-```
-
-Note: `*` indicates the cursor position in command mode
-
 %%% k6kbbsus-96d17zfgyqo
 :Side
 Git command to: 
@@ -190,24 +113,4 @@ new Set(['a', 'b'], ['b', 'c'])
 Set { 'a', 'b' }
 ```
 
-%%% k6kbbsut-qu36guz1ui8
-:Side
-Vim
-`<C-r>` does what?
-
-:Side
-Vim keystroke to:
-
-redo
-
-%%%
-:Side
-Vim
-`68G` does what?
-
-:Side
-Vim
-Keystroke(s) to:
-
-go to line `68`
 
