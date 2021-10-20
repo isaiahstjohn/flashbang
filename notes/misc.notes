@@ -113,4 +113,19 @@ new Set(['a', 'b'], ['b', 'c'])
 Set { 'a', 'b' }
 ```
 
+%%%
+:Side
+How can you display a file in the terminal so that it refreshes
+whenever changes are made?
+
+:Side
+Bash
+`watch my_file` does what?
+
+%%%
+:Cloze
+Responsive, pretty auto-updating display of a file in the terminal
+```bash
+{{c1::watch}} {{c2::--interval}} {{c3::0.1}} {{c4::--no-title}} {{c5::"cat my_file"}}
+```
 

@@ -329,3 +329,52 @@ Jump to the previous blank line
 Vim
 `{` does what?
 
+%%%
+:Front
+Vim
+```plaintext
+...
+7| some text
+8| a word
+9| more stuff
+...
+```
+How can you arrange these lines into neat columns?
+
+:Back
+`:7,9!column -s " " -t`
+Result:
+```plaintext
+7| some  text
+8| a     word
+9| more  stuff
+```
+
+%%%
+:Front
+Vim
+What does the following command do?
+`:%!column -s " " -t`
+
+:Back
+It arranges the entire file into a table of columns, using spaces to 
+determine where fields are separated.
+
+%%%
+:Side
+Vim
+Command to go to the 15th column
+
+:Side
+Vim
+`15|` does what?
+
+%%%
+:Side
+Vim
+Delete from cursor to column 40
+
+:Side
+Vim
+`d40|` does what?
+
